@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head> </head>
+    <body>
+        <script type="text/javascript">
+
+            // Initial prompt.
+            let input = prompt("Please enter your defense! (rock, paper, scissors)");
+
+            // Initializing the scorboard for both sides.
+            let humanPoints = 0;
+            let computerPoints = 0;
+
+            // Setting up the computer player, throws one of three values at random.
+            const computerPlay = () => {
+                let computerChoice = [
+                    'Paper',
+                    'Scissors',
+                    'Rock'
+                ];
+                let randomNumber = Math.floor(Math.random() * computerChoice.length);
+                return computerChoice[randomNumber];
+            }
+
+            // Actual game process.
+            const game = (input, computerSelection = computerPlay()) => {
+
+                // Makes the user input case-insensitive.
+                let playerSelectionLowerCase = input.toLowerCase();
+
+                // Possibilities upon rock throw.
+                if (playerSelectionLowerCase === "rock") {
+                    if (computerSelection === "Paper") {
+                        console.log(`Computers choice: ${computerSelection}. You lose.`);
+                        computerPoints++;
+                    }
+                    if (computerSelection === "Scissors") {
+                        console.log(`Computers choice: ${computerSelection}. You win!`);
+                        humanPoints++;
+                    }
+                    if (computerSelection === "Rock") {
+                        console.log(`Computers choice: ${computerSelection}. It's a draw!`);
+                    }
+                }
+
+                // Possibilities upon paper throw.
+                if (playerSelectionLowerCase === "paper") {
+                    if (computerSelection === "Paper") {
+                        console.log(`Computers choice: ${computerSelection}. It's a draw!`);
+                    }
+                    if (computerSelection === "Scissors") {
+                        console.log(`Computers choice: ${computerSelection}. You lose.`);
+                        computerPoints++;
+                    }
+                    if (computerSelection === "Rock") {
+                        console.log(`Computers choice: ${computerSelection}. You win!`);
+                        humanPoints++;
+                    }
+                }
+
+                // Possibilities upon scissors throw.
+                if (playerSelectionLowerCase === "scissors") {
+                    if (computerSelection === "Paper") {
+                        console.log(`Computers choice: ${computerSelection}. You win!`);
+                        humanPoints++;
+                    }
+                    if (computerSelection === "Scissors") {
+                        console.log(`Computers choice: ${computerSelection}. It's a draw!`);
+                    }
+                    if (computerSelection === "Rock") {
+                        console.log(`Computers choice: ${computerSelection}. You lose.`);
+                        computerPoints++;
+                    }
+
+                }
+
+                // Prints the scoreboard.
+                const scoreboardHuman = console.log(`Human: ${humanPoints} points.`);
+                const scoreboardComputer = console.log(`Computer: ${computerPoints} points.`);
+                
+                
+            }
+
+            // Prints the game. (*Undefined variable in console, unknown fix.*)
+            console.log(game(input));
+
+        
+            
+        </script>
+    </body>
+</html>
