@@ -1,91 +1,42 @@
 <!DOCTYPE html>
-<html>
-    <head> </head>
-    <body>
-        <script type="text/javascript">
-
-            // Initial prompt.
-            let input = prompt("Please enter your defense! (rock, paper, scissors)");
-
-            // Initializing the scorboard for both sides.
-            let humanPoints = 0;
-            let computerPoints = 0;
-
-            // Setting up the computer player, throws one of three values at random.
-            const computerPlay = () => {
-                let computerChoice = [
-                    'Paper',
-                    'Scissors',
-                    'Rock'
-                ];
-                let randomNumber = Math.floor(Math.random() * computerChoice.length);
-                return computerChoice[randomNumber];
-            }
-
-            // Actual game process.
-            const game = (input, computerSelection = computerPlay()) => {
-
-                // Makes the user input case-insensitive.
-                let playerSelectionLowerCase = input.toLowerCase();
-
-                // Possibilities upon rock throw.
-                if (playerSelectionLowerCase === "rock") {
-                    if (computerSelection === "Paper") {
-                        console.log(`Computers choice: ${computerSelection}. You lose.`);
-                        computerPoints++;
-                    }
-                    if (computerSelection === "Scissors") {
-                        console.log(`Computers choice: ${computerSelection}. You win!`);
-                        humanPoints++;
-                    }
-                    if (computerSelection === "Rock") {
-                        console.log(`Computers choice: ${computerSelection}. It's a draw!`);
-                    }
-                }
-
-                // Possibilities upon paper throw.
-                if (playerSelectionLowerCase === "paper") {
-                    if (computerSelection === "Paper") {
-                        console.log(`Computers choice: ${computerSelection}. It's a draw!`);
-                    }
-                    if (computerSelection === "Scissors") {
-                        console.log(`Computers choice: ${computerSelection}. You lose.`);
-                        computerPoints++;
-                    }
-                    if (computerSelection === "Rock") {
-                        console.log(`Computers choice: ${computerSelection}. You win!`);
-                        humanPoints++;
-                    }
-                }
-
-                // Possibilities upon scissors throw.
-                if (playerSelectionLowerCase === "scissors") {
-                    if (computerSelection === "Paper") {
-                        console.log(`Computers choice: ${computerSelection}. You win!`);
-                        humanPoints++;
-                    }
-                    if (computerSelection === "Scissors") {
-                        console.log(`Computers choice: ${computerSelection}. It's a draw!`);
-                    }
-                    if (computerSelection === "Rock") {
-                        console.log(`Computers choice: ${computerSelection}. You lose.`);
-                        computerPoints++;
-                    }
-
-                }
-
-                // Prints the scoreboard.
-                const scoreboardHuman = console.log(`Human: ${humanPoints} points.`);
-                const scoreboardComputer = console.log(`Computer: ${computerPoints} points.`);
-                
-                
-            }
-
-            // Prints the game. (*Undefined variable in console, unknown fix.*)
-            console.log(game(input));
-
-        
-            
-        </script>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>R-P-S Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e391ce7786.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <h2 id="demo">Try your luck !</h2>
+<!--  The Container  -->
+    <div class="container">
+<!--   The first section     -->
+        <div class="section">
+            <div class="info">
+                <h3>You :</h3><span id="playerScore">0</span>
+            </div>
+            <div class="show">
+                <i class="fas fa-hand-rock"></i>
+            </div>
+        </div>
+<!--   The second section     -->
+        <div class="section">
+            <div class="info">
+                <h3>Computer :</h3><span id="computerScore">0</span>
+            </div>
+            <div class="show computer">
+                <i class="fas fa-hand-scissors"></i>
+            </div>
+        </div>
+    </div>
+    <h2 style="color:rgba(158, 158, 158, 0.75);" id="demo2">Choose One !</h2>
+<!-- contains the buttons   -->
+    <div class="selection">
+        <button class="fas fa-hand-rock" id="rock"></button>
+        <button class="fas fa-hand-paper" id="paper"></button>
+        <button class="fas fa-hand-scissors" id="scissors"></button>
+    </div>
+</body>
 </html>
